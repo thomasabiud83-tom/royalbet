@@ -1,104 +1,32 @@
-HTML
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101014">
-<title>Royal Bet - Free Play</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101014"><title>Royal Bet — Free Play</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#101014;color:#f5f5f5;font-family:Arial,sans-serif}
-header{padding:22px 15px;text-align:center;background:#19191f;border-bottom:2px solid #d7ae49}
-.crown{font-size:35px;color:#f5cc61}
-h1{margin:5px;color:#f5cc61;letter-spacing:3px}
-header p{color:#bbb;margin:6px}
-main{max-width:850px;margin:auto;padding:16px}
-.notice{background:#202027;border:1px solid #45454c;padding:12px;border-radius:10px;color:#ddd;font-size:13px;line-height:1.5}
-h2{color:#f5cc61;font-size:20px}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
-.card{background:#202027;border:1px solid #393940;border-radius:14px;padding:15px;text-align:center}
-.art{font-size:42px;margin:8px}
-.card h3{margin:8px 0;color:#f5cc61}
-.card p{font-size:12px;color:#bbb;min-height:30px}
-button{background:#e9bd50;color:#17130a;border:0;border-radius:9px;padding:12px 14px;font-weight:bold;cursor:pointer;width:100%}
-button:disabled{opacity:.5}
-#stage{margin-top:18px;background:#19191f;border:1px solid #4a4433;border-radius:14px;padding:18px;text-align:center}
-#motion{font-size:58px;margin:14px}
-#status{color:#ddd;min-height:25px}
-#timer{font-size:26px;color:#f5cc61;font-weight:bold}
-.small{font-size:12px;color:#aaa}
-footer{text-align:center;padding:22px;color:#999;font-size:12px}
-</style>
-</head>
-<body>
-<header>
-<div class="crown">♛</div>
-<h1>ROYAL BET</h1>
-<p>FREE PLAY • SIX FLIGHT CHALLENGES</p>
-</header>
-<main>
-<div class="notice">
-<strong>Practice mode only.</strong> These are simple animated timing games using no money and no wagering. There are no deposits, cash-outs or payouts.
-</div>
-<h2>Choose your game</h2>
-<div class="games">
-<div class="card"><div class="art">✈️</div><h3>Aviator</h3><p>Watch the plane climb.</p><button onclick="startGame('Aviator','✈️')">Play</button></div>
-<div class="card"><div class="art">🛩️</div><h3>Aviatrix</h3><p>Take a flight through the sky.</p><button onclick="startGame('Aviatrix','🛩️')">Play</button></div>
-<div class="card"><div class="art">🚀</div><h3>Jet X</h3><p>Launch a jet challenge.</p><button onclick="startGame('Jet X','🚀')">Play</button></div>
-<div class="card"><div class="art">☄️</div><h3>Comet Crash</h3><p>Follow the flying comet.</p><button onclick="startGame('Comet Crash','☄️')">Play</button></div>
-<div class="card"><div class="art">🚀</div><h3>Rocket Rise</h3><p>See how long the rocket rises.</p><button onclick="startGame('Rocket Rise','🚀')">Play</button></div>
-<div class="card"><div class="art">🌆</div><h3>Skyline Dash</h3><p>Dash across the skyline.</p><button onclick="startGame('Skyline Dash','🌆')">Play</button></div>
-</div>
-<section id="stage">
-<h2 id="gameTitle">Welcome to Royal Bet</h2>
-<div id="motion">👑</div>
-<div id="timer">0.0 seconds</div>
-<p id="status">Choose a game above to begin.</p>
-<button id="start" onclick="begin()" style="max-width:240px">Start challenge</button>
-<p class="small">Your result is a practice time, not money or a payout.</p>
+:root{--bg:#101014;--panel:#1b1b23;--panel2:#24242e;--gold:#f4c75b;--gold2:#ffe6a0;--text:#f7f4ed;--muted:#b9b5ac;--green:#3cc58a;--line:#393844}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#292319 0,#101014 48%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}button{font:inherit;cursor:pointer}.wrap{max-width:900px;margin:auto;padding:18px 14px 34px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px 20px}.brand{display:flex;align-items:center;gap:10px}.crown{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#ffe7a0,#c48b22);color:#17130a;font-size:25px;box-shadow:0 6px 22px #f4c75b26}.brand h1{font-size:21px;letter-spacing:1.5px;margin:0;color:var(--gold)}.brand p{font-size:11px;color:var(--muted);margin:2px 0 0;letter-spacing:2px}.demo{border:1px solid #6c582b;color:var(--gold2);background:#2a2417;border-radius:99px;padding:7px 10px;font-size:11px;font-weight:800;white-space:nowrap}.hero{background:linear-gradient(120deg,#332818,#1b1a20 68%);border:1px solid #66502a;border-radius:24px;padding:23px 20px;margin-bottom:16px;position:relative;overflow:hidden}.hero:after{content:'♛';position:absolute;right:10px;top:-32px;font-size:150px;color:#f4c75b0c;pointer-events:none}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:clamp(25px,6vw,36px);line-height:1.1;margin:9px 0}.hero p{color:var(--muted);max-width:480px;margin:0 0 18px;font-size:14px}.balance{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#121217;border:1px solid var(--line);border-radius:17px;padding:14px 15px;margin-bottom:18px}.balance small{display:block;color:var(--muted);font-size:11px;letter-spacing:1px;text-transform:uppercase}.amount{font-size:27px;font-weight:850;color:var(--gold);margin-top:2px}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;transition:transform .12s}.btn:active{transform:scale(.98)}.primary{background:linear-gradient(135deg,var(--gold2),#dba633);color:#201808}.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.small{padding:9px 11px;font-size:12px}.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:23px 2px 12px;gap:8px}.sectionhead h3{margin:0;font-size:18px}.sectionhead span{font-size:12px;color:var(--muted)}.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.game{background:linear-gradient(145deg,#24232b,#19191f);border:1px solid var(--line);border-radius:18px;padding:16px;min-width:0}.gameicon{width:45px;height:45px;border-radius:14px;background:#382f1e;display:grid;place-items:center;font-size:25px;margin-bottom:12px}.game h4{font-size:16px;margin:0 0 5px}.game p{font-size:12px;color:var(--muted);min-height:34px;margin:0 0 12px;line-height:1.45}.game .btn{width:100%}.playbox{display:none;background:#19191f;border:1px solid #66502a;border-radius:20px;padding:18px;margin-top:16px}.playbox.active{display:block}.playbox h3{margin:0 0 5px}.playbox p{color:var(--muted);font-size:13px;margin:0 0 14px}.playrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.numberrow{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.num{width:47px;height:47px;border:1px solid #5a554b;border-radius:12px;background:#292832;color:white;font-weight:800;font-size:17px}.num.selected{background:var(--gold);color:#17130a;border-color:var(--gold)}.result{margin-top:13px;padding:13px;border-radius:12px;background:#121217;border:1px solid var(--line);font-weight:700;min-height:45px}.foot{text-align:center;color:#89858e;font-size:11px;line-height:1.6;margin-top:24px}.flightstage{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:150px;background:radial-gradient(ellipse at center,#283b56,#11131b 72%);border:1px solid #3b4b67;border-radius:16px;margin:12px 0;padding:18px;overflow:hidden}.flighticon{font-size:46px;transition:transform .08s linear}.flightmeter{font-size:18px;font-weight:850;color:var(--gold);margin-top:14px}.flightnote{font-size:11px!important;min-height:0!important;margin-top:12px!important}.btn:disabled{opacity:.65;cursor:wait}.notice{border:1px solid #3f493f;background:#18231c;color:#c7e7d0;padding:12px;border-radius:14px;font-size:12px;line-height:1.5;margin-top:16px}select{background:#292832;color:white;border:1px solid #5a554b;border-radius:10px;padding:11px} @media(min-width:650px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:30px}.game{padding:17px}}@media(max-width:360px){.games{grid-template-columns:1fr}.demo{font-size:10px}.brand h1{font-size:18px}}
+</style></head>
+<body><main class="wrap">
+<header class="top"><div class="brand"><div class="crown">♛</div><div><h1>ROYAL BET</h1><p>PLAY • PRACTISE • ENJOY</p></div></div><div class="demo">FREE-PLAY DEMO</div></header>
+<section class="hero"><div class="eyebrow">Welcome to the game lounge</div><h2>Play for fun.<br><span style="color:var(--gold)">Keep it virtual.</span></h2><p>Try quick mini-games and animated flight-time challenges in a polished game room. Everything is for fun and uses no real money.</p><button class="btn primary" onclick="document.getElementById('gamesTitle').scrollIntoView({behavior:'smooth'})">Explore games ↓</button></section>
+<section class="balance"><div><small>Practice credits</small><div class="amount"><span id="credits">1000</span> <span style="font-size:13px;color:var(--muted)">PTS</span></div></div><button class="btn secondary small" onclick="resetCredits()">↻ Reset credits</button></section>
+<div class="sectionhead" id="gamesTitle"><h3>Mini games</h3><span>10 games · just for fun</span></div>
+<section class="games">
+<article class="game"><div class="gameicon">🎯</div><h4>Lucky Number</h4><p>Pick a number from 1 to 5 and see what appears.</p><button class="btn secondary" onclick="openGame('number')">Play now</button></article>
+<article class="game"><div class="gameicon">🪙</div><h4>Heads or Tails</h4><p>Flip a virtual coin and see which side lands up.</p><button class="btn secondary" onclick="openGame('coin')">Flip coin</button></article>
+<article class="game"><div class="gameicon">🎲</div><h4>Dice Roll</h4><p>Roll a virtual six-sided die and test your prediction.</p><button class="btn secondary" onclick="openGame('dice')">Roll dice</button></article>
+<article class="game"><div class="gameicon">🎡</div><h4>Lucky Spinner</h4><p>Spin for a random colour. No credits are spent or won.</p><button class="btn secondary" onclick="openGame('spin')">Spin now</button></article>
+<article class="game"><div class="gameicon">✈️</div><h4>Aviator Flight</h4><p>Watch a virtual plane rise, then see how long the flight lasts. No stakes or cash-out.</p><button class="btn secondary" onclick="openGame('aviator')">Start flight</button></article>
+<article class="game"><div class="gameicon">🚀</div><h4>Rocket Rise</h4><p>Launch a rocket and try to beat your previous flight-time score.</p><button class="btn secondary" onclick="openGame('rocket')">Launch rocket</button></article>
+<article class="game"><div class="gameicon">🌌</div><h4>Skyline Dash</h4><p>A short animated sky challenge. Try to watch the flight for as long as it lasts.</p><button class="btn secondary" onclick="openGame('skyline')">Start challenge</button></article>
+<article class="game"><div class="gameicon">🛩️</div><h4>Aviatrix</h4><p>A second airplane-themed flight-time challenge.</p><button class="btn secondary" onclick="openGame('aviatrix')">Start flight</button></article>
+<article class="game"><div class="gameicon">🛫</div><h4>Jet X</h4><p>Track a virtual jet’s flight time and try again for a new score.</p><button class="btn secondary" onclick="openGame('jetx')">Launch jet</button></article>
+<article class="game"><div class="gameicon">☄️</div><h4>Comet Crash</h4><p>Follow a comet’s animated run and record its flight time.</p><button class="btn secondary" onclick="openGame('comet')">Start comet run</button></article>
 </section>
+<section class="playbox" id="playbox"><h3 id="playTitle">Game</h3><p id="playDesc">Choose an option to begin.</p><div id="playControls"></div><div class="result" id="result" aria-live="polite">Your result will appear here.</div><div style="margin-top:12px"><button class="btn secondary small" onclick="closeGame()">Close game</button></div></section>
+<div class="notice"><strong>Demo notice:</strong> Royal Bet is a learning project. Credits are virtual points only; there are no deposits, cash prizes, withdrawals, or real-money transactions.</div>
+<footer class="foot">ROYAL BET · FREE-PLAY EDITION<br>Play responsibly and take breaks. This demo does not use real money.</footer>
 </main>
-<footer>ROYAL BET • Free-play demo • Made for practice</footer>
 <script>
-let selected="Royal Bet",symbol="👑",running=false,started=0,elapsed=0,frame=null,stopAt=0;
-const $=id=>document.getElementById(id);
-function startGame(name,emoji){
- selected=name;symbol=emoji;running=false;
- if(frame)cancelAnimationFrame(frame);
- $("gameTitle").textContent=name;
- $("motion").textContent=emoji;
- $("timer").textContent="0.0 seconds";
- $("status").textContent="Ready? Start the timing challenge.";
- $("start").disabled=false;
- $("start").textContent="Start challenge";
-}
-function begin(){
- if(running)return;
- running=true;started=performance.now();elapsed=0;
- stopAt=started+5000+Math.random()*5000;
- $("start").disabled=true;
- $("status").textContent="In progress! Watch the animation.";
- function tick(now){
-   if(!running)return;
-   elapsed=(now-started)/1000;
-   $("timer").textContent=elapsed.toFixed(1)+" seconds";
-   $("motion").style.transform="translateY("+(-Math.min(elapsed*5,35))+"px) rotate("+(Math.sin(now/180)*8)+"deg)";
-   if(now>=stopAt){
-     running=false;
-     $("status").textContent="Challenge complete! Your practice time: "+elapsed.toFixed(1)+" seconds.";
-     $("start").disabled=false;
-     $("start").textContent="Try again";
-     $("motion").style.transform="";
-     return;
-   }
-   frame=requestAnimationFrame(tick);
- }
- $("status").textContent="Your "+selected+" challenge has started!";
- frame=requestAnimationFrame(tick);
-}
-</script>
-</body>
-</html>
-add 6 free crash games
+let credits=1000, chosen=1, current='number', flightTimer=null, flightStart=0, flightEnd=0, flightFrame=null;const $=id=>document.getElementById(id);function updateCredits(){$('credits').textContent=credits}function resetCredits(){credits=1000;updateCredits();$('result').textContent='Practice balance reset to 1,000 points.'}function openGame(game){current=game;$('playbox').classList.add('active');$('result').textContent='Your result will appear here.';let titles={number:'🎯 Lucky Number',coin:'🪙 Heads or Tails',dice:'🎲 Dice Roll',spin:'🎡 Lucky Spinner',aviator:'✈️ Aviator Flight',rocket:'🚀 Rocket Rise',skyline:'🌌 Skyline Dash',aviatrix:'🛩️ Aviatrix',jetx:'🛫 Jet X',comet:'☄️ Comet Crash'},descs={number:'Choose a number, then reveal a random number from 1 to 5.',coin:'Tap either side to flip a virtual coin.',dice:'Guess the die result from 1 to 6, then roll.',spin:'Spin the wheel to reveal a random colour.',aviator:'A flight-time challenge inspired by arcade flight games. There are no stakes, payouts, or cash-out actions.',rocket:'Launch a virtual rocket and see how long it flies. This only records a time score.',skyline:'Watch the skyline flight and try to beat your personal time score. No credits are used.',aviatrix:'A plane-themed arcade flight-time challenge. No wagers, payouts, or cash-out.',jetx:'A jet-themed reaction and timing challenge. No wagers, payouts, or cash-out.',comet:'A comet-themed animated timing challenge. No wagers, payouts, or cash-out.'};$('playTitle').textContent=titles[game];$('playDesc').textContent=descs[game];let c='';if(game==='number'){c='<div class="numberrow">'+[1,2,3,4,5].map(n=>`<button class="num ${n===chosen?'selected':''}" onclick="chooseNum(${n},this)">${n}</button>`).join('')+'</div><button class="btn primary" onclick="playNumber()">Reveal number</button>'}if(game==='coin'){c='<div class="playrow"><button class="btn primary" onclick="flipCoin(\'Heads\')">🙂 Heads</button><button class="btn secondary" onclick="flipCoin(\'Tails\')">🌙 Tails</button></div>'}if(game==='dice'){c='<div class="playrow"><label for="guess">Your guess:</label><select id="guess">'+[1,2,3,4,5,6].map(n=>`<option value="${n}">${n}</option>`).join('')+'</select><button class="btn primary" onclick="rollDice()">Roll die</button></div>'}if(game==='spin'){c='<button class="btn primary" onclick="spinWheel()">🎡 Spin the wheel</button>'}if(['aviator','rocket','skyline','aviatrix','jetx','comet'].includes(game)){let labels={aviator:'✈️ Start flight',rocket:'🚀 Launch rocket',skyline:'🌌 Begin sky challenge',aviatrix:'🛩️ Start Aviatrix',jetx:'🛫 Launch Jet X',comet:'☄️ Start Comet Crash'};let emojis={aviator:'✈️',rocket:'🚀',skyline:'🌌',aviatrix:'🛩️',jetx:'🛫',comet:'☄️'};let label=labels[game];c='<div class="flightstage"><div id="flightIcon" class="flighticon">'+emojis[game]+'</div><div id="flightMeter" class="flightmeter">Ready for takeoff</div></div><button id="flightBtn" class="btn primary" onclick="startFlight()">'+label+'</button><p class="flightnote">Score = seconds in flight. This is a reaction/time challenge only; no points are wagered or paid out.</p>'}$('playControls').innerHTML=c;$('playbox').scrollIntoView({behavior:'smooth',block:'nearest'})}function chooseNum(n,el){chosen=n;document.querySelectorAll('.num').forEach(b=>b.classList.remove('selected'));el.classList.add('selected')}function playNumber(){let n=1+Math.floor(Math.random()*5);$('result').textContent=`The number is ${n}. ${n===chosen?'You guessed it! Nice job.':'Your pick was '+chosen+'. Try another round!'}`}function flipCoin(pick){let side=Math.random()<.5?'Heads':'Tails';$('result').textContent=`The coin landed on ${side}. ${side===pick?'You picked the same side!':'You picked '+pick+'.'}`}function rollDice(){let n=1+Math.floor(Math.random()*6),g=Number($('guess').value);$('result').textContent=`🎲 The die shows ${n}. ${n===g?'Exact guess!':'Your guess was '+g+'. Try again!'}`}function spinWheel(){let colours=['Gold 🟡','Emerald 🟢','Ruby 🔴','Sapphire 🔵','Violet 🟣','Silver ⚪'];$('result').textContent='The wheel landed on '+colours[Math.floor(Math.random()*colours.length)]+'.'}function startFlight(){if(flightTimer)clearTimeout(flightTimer);if(flightFrame)clearInterval(flightFrame);let btn=$('flightBtn'),icon=$('flightIcon'),meter=$('flightMeter');if(!btn||!meter)return;btn.disabled=true;btn.textContent='Flight in progress…';flightStart=Date.now();let duration=1800+Math.random()*5200;flightEnd=flightStart+duration;let emojis={aviator:'✈️',rocket:'🚀',skyline:'🌌',aviatrix:'🛩️',jetx:'🛫',comet:'☄️'};let emoji=emojis[current]||'✈️';meter.textContent='0.0 seconds';icon.textContent=emoji;flightFrame=setInterval(()=>{let elapsed=(Date.now()-flightStart)/1000;meter.textContent=elapsed.toFixed(1)+' seconds';icon.style.transform='translateY('+(-Math.min(70,elapsed*9))+'px) rotate(-5deg)';},80);flightTimer=setTimeout(()=>{clearInterval(flightFrame);flightFrame=null;flightTimer=null;let score=((Date.now()-flightStart)/1000).toFixed(1);meter.textContent='Flight ended at '+score+' seconds';icon.style.transform='translateY(0)';btn.disabled=false;btn.textContent='Try another flight';$('result').textContent='Nice run! Your time score was '+score+' seconds. Try again to beat your personal best.';},duration)}function closeGame(){if(flightTimer)clearTimeout(flightTimer);if(flightFrame)clearInterval(flightFrame);flightTimer=null;flightFrame=null;$('playbox').classList.remove('active')}
+</script></body></html>
