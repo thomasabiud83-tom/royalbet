@@ -1,0 +1,18 @@
+{
+  "name": "Royal Bet",
+  "short_name": "Royal Bet",
+  "description": "Royal Bet free-play gaming demo",
+  "start_url": "./royalbet.html",
+  "display": "standalone",
+  "background_color": "#edf5ef",
+  "theme_color": "#087443",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

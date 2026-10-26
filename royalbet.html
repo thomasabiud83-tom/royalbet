@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#087443">
+<title>Royal Bet</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#edf5ef;color:#183b2b}
+header{background:#087443;color:white;text-align:center;padding:22px 12px}
+header h1{margin:0;font-size:30px}
+nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;background:#075c36;padding:14px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{max-width:760px;margin:auto;padding:14px}
+.card{background:white;padding:18px;margin-bottom:16px;border-radius:13px;box-shadow:0 2px 8px #00000010}
+button{background:#087443;color:white;border:0;padding:12px 16px;border-radius:8px;font-size:15px;cursor:pointer}
+button:disabled{opacity:.5}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #b9cfc0;border-radius:7px;font-size:16px}
+.muted{color:#62756a;font-size:14px}
+.balance{font-size:25px;color:#087443;font-weight:bold}
+.crashbox{background:#09291d;color:white;text-align:center;border-radius:12px;padding:24px 10px}
+#multiplier{font-size:48px;font-weight:bold;color:#55f59a;margin:15px}
+#crashStatus{min-height:24px}
+.game{border-top:1px solid #e1ece4;padding:12px 0}
+footer{text-align:center;padding:20px;color:#62756a}
+</style>
+</head>
+<body>
+
+<header>
+<h1>♛ ROYAL BET</h1>
+<p>Play for fun. Enjoy the games.</p>
+</header>
+
+<nav>
+<a href="#games">Games</a>
+<a href="#crash">Crash</a>
+<a href="#account">Account</a>
+<a href="#wallet">Wallet</a>
+<a href="#admin">Admin</a>
+</nav>
+
+<main>
+<section class="card">
+<h2>Welcome to Royal Bet!</h2>
+<p>Your mobile-friendly free-play gaming website.</p>
+<p class="muted">DEMO MODE ONLY: virtual credits have no cash value.
+No real-money deposits, bets, or withdrawals.</p>
+</section>
+
+<section class="card" id="account">
+<h2>Demo Account</h2>
+<label for="username">Display name</label>
+<input id="username" maxlength="30" placeholder="Enter a display name">
+<button onclick="saveName()">Save Name</button>
+<p id="accountMessage" class="muted">Guest player</p>
+</section>
+
+<section class="card" id="wallet">
+<h2>Virtual Wallet</h2>
+<p>Available demo credits</p>
+<div class="balance" id="balance">1,000</div>
+<p class="muted">Practice points only. They cannot be exchanged for money.</p>
+<button onclick="resetCredits()">Reset Demo Credits</button>
+</section>
+
+<section class="card" id="crash">
+<h2>🚀 Crash Game</h2>
+<p>Watch the multiplier rise. Press Stop before the round crashes to finish the demo round.</p>
+<div class="crashbox">
+<p id="crashStatus">Ready for a demo round?</p>
+<div id="multiplier">1.00x</div>
+<button id="startButton" onclick="startCrash()">Start Demo</button>
+<button id="stopButton" onclick="stopCrash()" disabled>Stop Round</button>
+</div>
+<p class="muted">Demo simulation only. No credits are wagered or awarded. The result is for entertainment.</p>
+</section>
+
+<section class="card" id="games">
+<h2>🎮 Other Games</h2>
+<div class="game">
+<h3>Lucky Number</h3>
+<p>Generate a random number from 1 to 6.</p>
+<button onclick="playNumber()">Play Demo</button>
+<p id="numberResult"></p>
+</div>
+<div class="game">
+<h3>Coin Flip</h3>
+<p>Try a virtual coin flip.</p>
+<button onclick="flipCoin()">Flip Coin</button>
+<p id="coinResult"></p>
+</div>
+<div class="game">
+<h3>Lucky Spinner</h3>
+<p>Spin for a random result.</p>
+<button onclick="spinWheel()">Spin Demo</button>
+<p id="spinnerResult"></p>
+</div>
+</section>
+
+<section class="card" id="admin">
+<h2>⚙️ Admin Dashboard</h2>
+<p>This is a preview of the admin area, not a secure control panel.</p>
+<ul>
+<li>View demo game list</li>
+<li>View demo wallet balance</li>
+<li>Manage games: not connected yet</li>
+<li>User management: not connected yet</li>
+</ul>
+<p class="muted">Real admin permissions require secure server-side authentication.</p>
+</section>
+</main>
+
+<footer>
+<p>Royal Bet · Free-play demo</p>
+<p>Play responsibly. No real-money transactions.</p>
+</footer>
+
+<script>
+let balance = 1000;
+let crashTimer = null;
+let crashStartTime = 0;
+let crashPoint = 0;
+let currentMultiplier = 1;
+let roundRunning = false;
+
+function saveName(){
+  const name = document.getElementById("username").value.trim();
+  document.getElementById("accountMessage").textContent =
+    name ? "Welcome, " + name + "!" : "Please enter a display name.";
+}
+
+function updateBalance(){
+  document.getElementById("balance").textContent = balance.toLocaleString();
+}
+
+function resetCredits(){
+  balance = 1000;
+  updateBalance();
+}
+
+function playNumber(){
+  const n = Math.floor(Math.random()*6)+1;
+  document.getElementById("numberResult").textContent =
+    "Your random number is " + n + ".";
+}
+
+function flipCoin(){
+  const result = Math.random() < 0.5 ? "Heads" : "Tails";
+  document.getElementById("coinResult").textContent = "Result: " + result;
+}
+
+function spinWheel(){
+  const results = ["Star","Crown","Diamond","Sun","Moon","Heart"];
+  const result = results[Math.floor(Math.random()*results.length)];
+  document.getElementById("spinnerResult").textContent = "You got: " + result;
+}
+
+function startCrash(){
+  if(roundRunning) return;
+  roundRunning = true;
+  currentMultiplier = 1;
+  crashPoint = 1.15 + Math.random()*4.85;
+  crashStartTime = Date.now();
+
+  document.getElementById("startButton").disabled = true;
+  document.getElementById("stopButton").disabled = false;
+  document.getElementById("crashStatus").textContent = "Multiplier rising...";
+  document.getElementById("multiplier").textContent = "1.00x";
+
+  crashTimer = setInterval(function(){
+    const elapsed = (Date.now()-crashStartTime)/1000;
+    currentMultiplier = Math.exp(elapsed*0.22);
+    document.getElementById("multiplier").textContent =
+      currentMultiplier.toFixed(2)+"x";
+
+    if(currentMultiplier >= crashPoint){
+      endCrash();
+    }
+  }, 50);
+}
+
+function stopCrash(){
+  if(!roundRunning) return;
+  clearInterval(crashTimer);
+  roundRunning = false;
+  document.getElementById("crashStatus").textContent =
+    "Demo round stopped at "+currentMultiplier.toFixed(2)+"x.";
+  document.getElementById("stopButton").disabled = true;
+  document.getElementById("startButton").disabled = false;
+}
+
+function endCrash(){
+  clearInterval(crashTimer);
+  roundRunning = false;
+  document.getElementById("multiplier").textContent =
+    crashPoint.toFixed(2)+"x";
+  document.getElementById("crashStatus").textContent =
+    "CRASH! This demo round has ended.";
+  document.getElementById("stopButton").disabled = true;
+  document.getElementById("startButton").disabled = false;
+}
+</script>
+</body>
+</html>
